@@ -1,0 +1,266 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top on mobile */
+    min-height: 100vh;
+    margin: 0;
+    padding: 10px; /* Reduced padding for small screens */
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px; /* Reduced padding for small screens */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #333;
+    font-size: 1.8em; /* Smaller font size for mobile */
+    margin-bottom: 15px;
+}
+
+.controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e9e9ff;
+    border-radius: 8px;
+}
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.1em;
+    margin-top: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    width: 100%; /* Make button full width on mobile */
+    max-width: 300px; /* Limit max width for larger screens */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.problem-area {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fffacd; /* Lemon Chiffon */
+    border: 2px dashed #ffd700; /* Gold */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.problem-area p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#equation-display {
+    font-size: 1.8em; /* Size for the equation */
+    color: #d2691e; /* Chocolate */
+    min-height: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* KaTeX specific: make sure it can handle width */
+    overflow-x: auto; /* Add scroll if equation is very long */
+    padding: 5px;
+}
+
+/* Styles for user input and check */
+#answer-input-area {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center;
+    gap: 10px;
+}
+
+#answer-input-area label {
+    font-size: 1.2em;
+    color: #555;
+}
+
+#user-answer {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+    box-sizing: border-box;
+}
+
+#check-answer-btn {
+     margin-top: 0;
+     width: auto;
+     max-width: none;
+     padding: 10px 20px;
+     font-size: 1em;
+}
+
+/* Styles for feedback */
+#feedback-area {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    min-height: 1.2em;
+}
+
+#feedback-text {
+     margin: 0;
+     font-size: 1.2em;
+}
+
+.correct {
+    background-color: #e0ffe0; /* Light green */
+    color: #1b5e20; /* Dark green */
+    border: 1px solid #4CAF50;
+}
+
+.incorrect {
+     background-color: #ffe0e0; /* Light red */
+     color: #c62828; /* Dark red */
+     border: 1px solid #f44336;
+}
+
+
+/* Styles for correct answer display */
+#correct-answer-area {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #e9e9ff; /* Light blue */
+    border: 2px dashed #6060ff; /* Blue */
+    border-radius: 10px;
+    min-height: 1.5em;
+}
+
+#correct-answer-area p {
+    margin: 0;
+    font-size: 1.2em;
+    color: #303f9f; /* Dark blue */
+}
+
+#correct-answer-display {
+    font-weight: bold;
+    color: #00008b; /* Navy blue */
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+/* --- Media Query for larger screens --- */
+@media (min-width: 600px) {
+    body {
+         align-items: center;
+         padding: 20px;
+    }
+
+    .container {
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .controls {
+        margin-bottom: 30px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    button {
+        padding: 15px 25px;
+        font-size: 1.2em;
+        margin-top: 20px;
+        border-radius: 8px;
+        width: auto;
+        max-width: none;
+    }
+
+    .problem-area {
+        margin-top: 30px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+     .problem-area p {
+        font-size: 1.5em;
+     }
+
+    #equation-display {
+        font-size: 2.5em; /* Larger equation font size */
+    }
+
+    #answer-input-area {
+        flex-direction: row; /* Arrange items horizontally */
+        justify-content: center;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    #answer-input-area label {
+         font-size: 1.5em;
+    }
+
+    #user-answer {
+        font-size: 1.5em;
+        max-width: 250px;
+    }
+
+    #check-answer-btn {
+         padding: 15px 25px;
+         font-size: 1.2em;
+    }
+
+    #feedback-area {
+         padding: 15px;
+         margin-top: 20px;
+    }
+    #feedback-text {
+        font-size: 1.5em;
+    }
+
+    #correct-answer-area {
+        margin-top: 15px;
+        padding: 20px;
+    }
+     #correct-answer-area p {
+        font-size: 1.5em;
+     }
+     #correct-answer-display {
+         font-size: 1.5em; /* Match parent font size */
+     }
+}

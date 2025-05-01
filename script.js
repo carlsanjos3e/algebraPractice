@@ -67,15 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (b < 0) {
             equationString += ` - ${Math.abs(b)}`; // Use absolute value and minus sign
         }
-        // If b is 0, just omit the '+ 0'
+        // If b is 0, just omit the '+ 0'. This case is handled correctly by the if/else if structure.
 
         equationString += ` = ${c}`;
+
+        // --- Debugging line ---
+        console.log("Generated LaTeX:", equationString);
+        // ------------------------
 
         // Render the equation using KaTeX
         // Need to clear previous content first
         equationDisplay.innerHTML = '';
         try {
              // Use displayMode: false for inline rendering within the div
+            // throwOnError: false prevents script from crashing if KaTeX fails
             katex.render(equationString, equationDisplay, { displayMode: false, throwOnError: false });
         } catch (e) {
             console.error("KaTeX rendering error:", e);
@@ -103,12 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Compare user answer to the correct solution
-        // Use a small tolerance for floating point comparisons if needed,
-        // but for integer solutions, direct comparison is usually fine.
-        // const tolerance = 0.0001;
-        // const isCorrect = Math.abs(userAnswer - correctSolution) < tolerance;
-
-        const isCorrect = userAnswer === correctSolution; // Direct comparison for integer solutions
+        // For integer solutions, direct comparison is usually fine.
+        const isCorrect = userAnswer === correctSolution;
 
         // Display feedback
         feedbackArea.classList.remove('hidden', 'correct', 'incorrect'); // Reset classes
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
      // Allow checking answer by pressing Enter in the input field
     userAnswerInput.addEventListener('keypress', function(event) {
-        // Check if the key pressed was 'Enter' (key code 13)
+        // Check if the key pressed was 'Enter'
         if (event.key === 'Enter') {
             event.preventDefault(); // Prevent default form submission
             checkAnswerBtn.click(); // Simulate button click
